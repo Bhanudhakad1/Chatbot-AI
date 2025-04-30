@@ -3,8 +3,8 @@ const userInput = document.getElementById("userInput");
 const sendButton = document.getElementById("sendButton");
 const toggleDarkMode = document.getElementById("toggleDarkMode");
 
-// ✅ Updated API key
-const API_KEY = "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";
+// ✅ Latest API key
+const API_KEY = "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";
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
 // Get AI response
@@ -19,13 +19,13 @@ async function getBotResponse(userMessage) {
                 "X-Title": "AI Chatbot Test"
             },
             body: JSON.stringify({
-                model: "openrouter/auto",
+                model: "openrouter/auto", // Best option for testing
                 messages: [{ role: "user", content: userMessage }]
             })
         });
 
         const data = await response.json();
-        console.log("API response:", data);
+        console.log("API response:", data);  // Debug log
 
         if (data.choices && data.choices.length > 0) {
             return data.choices[0].message.content;
